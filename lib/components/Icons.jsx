@@ -4,6 +4,38 @@ const Icon = ({ width = 24, height = 24, children, ...props }) => (
   </svg>
 )
 
+export const PLIcon = (props) => (
+  <Icon width="16" height="10">
+    <rect width="16" height="10" fill="#fff"/>
+    <rect width="16" height="5" fill="#dc143c" y="5"/>
+  </Icon>
+)
+
+export const UAIcon = (props) => (
+  <Icon width="16" height="10">
+    <rect width="16" height="10" fill="#005BBB"/>
+    <rect width="16" height="5" fill="#FFD500" y="5"/>
+  </Icon>
+)
+export const GBIcon = (props) => (
+<svg width="16" height="10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30">
+<clipPath id="t">
+<path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+</clipPath>
+<path d="M0,0 v30 h60 v-30 z" fill="#00247d"/>
+<path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
+<path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#cf142b" strokeWidth="4"/>
+<path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
+<path d="M30,0 v30 M0,15 h60" stroke="#cf142b" strokeWidth="6"/>
+</svg>
+)
+export const RUIcon = (props) => (
+  <Icon width="15" height="9">
+<rect fill="#fff" width="16" height="3"/>
+<rect fill="#d52b1e" y="6" width="16" height="3"/>
+<rect fill="#0039a6" y="3" width="16" height="3"/>
+  </Icon>
+)
 export const ChargingIcon = (props) => (
   <Icon {...props}>
     <path d="M7 2v11h3v9l7-12h-4l3-8z" />

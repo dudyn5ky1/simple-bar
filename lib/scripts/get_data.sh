@@ -24,6 +24,8 @@ if [ "$SPOTIFY_IS_RUNNING" == true ]; then
   SPOTIFY_ARTIST_NAME=$(osascript -e 'tell application "Spotify" to artist of current track as string')
 fi
 
+LANGUAGE=$(xkbswitch -ge)
+
 echo $(cat <<-EOF
   {
     "battery": {
@@ -43,7 +45,8 @@ echo $(cat <<-EOF
       "playerState": "$SPOTIFY_PLAYER_STATE",
       "trackName": "$SPOTIFY_TRACK_NAME",
       "artistName": "$SPOTIFY_ARTIST_NAME"
-    }
+    },
+    "language": "$LANGUAGE"
   }
 EOF
 )
