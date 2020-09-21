@@ -11,6 +11,7 @@ const className = /* css */ `
   .simple-bar__error,
   .simple-bar__spaces {
     position: fixed;
+    display: flex;
     top: 0;
     left: 0;
     padding: 4px 5px;
@@ -32,7 +33,8 @@ const render = (state) => {
   const selectedDisplay = (data.spaces.windows.find(s => s.focused === 1) || {display: 1}).display;
   return (
     <div className="simple-bar__spaces">
-      <Spaces output={data.spaces} SIP={data.SIP} displayId={selectedDisplay} />
+      <Spaces output={data.spaces} SIP={data.SIP} displayId={1} />
+      <Spaces output={data.spaces} SIP={data.SIP} displayId={2} />
     </div>
   )
 }

@@ -33,7 +33,7 @@ const Spaces = ({ output, SIP, displayId }) => {
             displayId={displayId}
           />
         ))}
-        {SIPDisabled && (
+        {SIPDisabled && displayId === 2 && (
           <div className="spaces__add" onClick={onClick}>
             <AddIcon />
           </div>
