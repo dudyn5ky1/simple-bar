@@ -4,7 +4,8 @@ import { classnames, clickEffect } from '../utils.js'
 
 import { goToSpace } from '../yabai'
 
-const EXCLUSIONS = ['Finder', 'iTerm2']
+const EXCLUSIONS = ['Finder', 'iTerm2'];
+const EXCLUDED_TITLES = ['Microsoft Teams Notification'];
 
 const Space = ({ space, display, windows, SIPDisabled, focusedSpace, displayId }) => {
   if (display.index !== space.display) return null
@@ -31,13 +32,12 @@ const Space = ({ space, display, windows, SIPDisabled, focusedSpace, displayId }
   })
 
   if (focused) focusedSpace = index
-
   const apps = windows.filter(
-    (app) => app.space === index && (app['native-fullscreen'] === 1 || !EXCLUSIONS.includes(app.app))
+    (app) => app.space === index && (app['native-fullscreen'] === 1 || (!EXCLUSIONS.includes(app.app) && !EXCLUDED_TITLES.includes(app.title)))
   )
-
   const spaceLabel = label && label !== '' ? label : index
 
+  console.log("APPS: ",apps);
   return (
     <div className={classes} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <div className="space__inner" onClick={onClick}>
