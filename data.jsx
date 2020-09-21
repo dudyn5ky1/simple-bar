@@ -47,12 +47,13 @@ const render = ({ output, error }) => {
   const data = parseJson(output)
   if (!data) return <div className="simple-bar__error">JSON error...</div>
   const { battery, wifi, sound, spotify, language } = data
+	console.log(sound);
   return (
     <div className="simple-bar__data">
       <Spotify output={spotify} />
       <Language output={language} />
       <Battery output={battery} />
-      <Sound output={sound} />
+      {sound.volume !== "missing value" && <Sound output={sound} />}
       <Wifi output={wifi} />
       <DateDisplay />
       <Time />
