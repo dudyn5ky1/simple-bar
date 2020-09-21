@@ -35,7 +35,6 @@ const render = (state) => {
   }
   return (
     <div className="simple-bar__spaces">
-      <Spaces output={data.spaces} SIP={data.SIP} displayId={2} />
     </div>
   )
 }
