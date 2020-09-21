@@ -29,6 +29,10 @@ const render = (state) => {
   if (!output || error) return <div className="simple-bar__error">Something went wrong...</div>
   const data = parseJson(output)
   if (!data) return <div className="simple-bar__error">JSON error...</div>
+  const selectedDisplay = data.spaces.spaces.find(s => s.focused === 1).display;
+  if (selectedDisplay === 2) {
+    return <div></div>;
+  }
   return (
     <div className="simple-bar__spaces">
       <Spaces output={data.spaces} SIP={data.SIP} displayId={2} />
