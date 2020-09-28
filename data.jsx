@@ -11,7 +11,7 @@ import { parseJson } from './lib/utils.js'
 import { LanguageStyles, DateStyles, TimeStyles, BatteryStyles, WifiStyles, SoundStyles, SpotifyStyles } from './lib/styles/Styles.js'
 import { Theme } from './lib/styles/Theme.js'
 
-const refreshFrequency = 1000
+const refreshFrequency = 10000
 
 const className = /* css */ `
   .simple-bar__error,
