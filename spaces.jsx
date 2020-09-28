@@ -31,6 +31,7 @@ const render = (state) => {
   const data = parseJson(output)
   if (!data) return <div className="simple-bar__error">JSON error...</div>
   const selectedDisplay = (data.spaces.windows.find(s => s.focused === 1) || {display: 1}).display;
+  console.log(data.spaces.windows);
   return (
     <div className="simple-bar__spaces">
       <Spaces output={data.spaces} SIP={data.SIP} displayId={1} />
