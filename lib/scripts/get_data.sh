@@ -15,6 +15,7 @@ WIFI_SSID=$(networksetup -getairportnetwork en0 | cut -c 24-)
 
 VOLUME=$(osascript -e 'set ovol to output volume of (get volume settings)')
 MUTED=$(osascript -e 'set ovol to output muted of (get volume settings)')
+MIC=$(osascript -e 'set ovol to input volume of (get volume settings)')
 
 LANGUAGE=$(xkbswitch -ge)
 
@@ -32,7 +33,17 @@ echo $(cat <<-EOF
       "volume": "$VOLUME",
       "muted": "$MUTED"
     },
-    "language": "$LANGUAGE"
+    "language": "$LANGUAGE",
+    "mic": {
+      "volume": "$MIC"
+    },
+    "spotify": {
+      "spotifyIsRunning": "$SPOTIFY_IS_RUNNING",
+      "playerState": "$SPOTIFY_PLAYER_STATE",
+      "trackName": "$SPOTIFY_TRACK_NAME",
+      "artistName": "$SPOTIFY_ARTIST_NAME"
+    },
+    "browserTrack": "$BROWSER_TRACK"
   }
 EOF
 )
