@@ -1,5 +1,6 @@
 import { MicOn, MicOff } from './Icons.jsx';
 import { run } from 'uebersicht'
+import { refreshData } from '../utils.js'
 
 const Mic = ({ output }) => {
   if (!output) return;
@@ -10,16 +11,15 @@ const Mic = ({ output }) => {
 
   const toggleMode = () => {
     if (volume === '0') {
-      run('osascript -e \'set volume input volume 100\'')
+      run('osascript -e \'set volume input volume 100\'').then(refreshData);
     } else {
-      run('osascript -e \'set volume input volume 0\'')
+      run('osascript -e \'set volume input volume 0\'').then(refreshData);
     }
   }
 
   return (
     <div className="mic" onClick={toggleMode}>
       <Icon className="mic__icon" />
-      {volume}%
     </div>
   );
 };
