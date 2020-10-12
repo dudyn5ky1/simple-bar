@@ -2,13 +2,24 @@ import Time from './lib/components/Time.jsx'
 import DateDisplay from './lib/components/Date.jsx'
 import Battery from './lib/components/Battery.jsx'
 import Sound from './lib/components/Sound.jsx'
+import Mic from './lib/components/Mic.jsx'
 import Wifi from './lib/components/Wifi.jsx'
-import Spotify from './lib/components/Spotify.jsx'
 import Language from './lib/components/Language.jsx'
 
 import { parseJson } from './lib/utils.js'
 
-import { LanguageStyles, DateStyles, TimeStyles, BatteryStyles, WifiStyles, SoundStyles, SpotifyStyles } from './lib/styles/Styles.js'
+import {
+	LanguageStyles,
+  MicStyles,
+  DateStyles,
+  TimeStyles,
+  BatteryStyles,
+  WifiStyles,
+  SoundStyles,
+  SpotifyStyles,
+  BrowserTrackStyles,
+  SpecterStyles
+} from './lib/styles/Styles.js'
 import { Theme } from './lib/styles/Theme.js'
 
 const refreshFrequency = 10000
@@ -36,8 +47,11 @@ const className = /* css */ `
   ${BatteryStyles}
   ${WifiStyles}
   ${SoundStyles}
-  ${SpotifyStyles}
   ${LanguageStyles}
+  ${SpotifyStyles}
+  ${MicStyles}
+  ${BrowserTrackStyles}
+  ${SpecterStyles}
 `
 
 const command = 'bash simple-bar/lib/scripts/get_data.sh'
@@ -46,14 +60,13 @@ const render = ({ output, error }) => {
   if (!output || error) return <div className="simple-bar__error">Something went wrong...</div>
   const data = parseJson(output)
   if (!data) return <div className="simple-bar__error">JSON error...</div>
-  const { battery, wifi, sound, spotify, language } = data
-	console.log(sound);
+  const { language, battery, wifi, sound, mic, spotify, browserTrack } = data
   return (
     <div className="simple-bar__data">
-      <Spotify output={spotify} />
       <Language output={language} />
       <Battery output={battery} />
-      {sound.volume !== "missing value" && <Sound output={sound} />}
+      <Sound output={sound} />
+      <Mic output={mic} />
       <Wifi output={wifi} />
       <DateDisplay />
       <Time />
