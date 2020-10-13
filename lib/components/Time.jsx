@@ -20,7 +20,6 @@ const Time = () => {
     <div className="time">
       <ClockIcon className="time__icon" />
       {time}
-      <div className="time__filler" style={{ transform: `scaleX(${fillerWidth})` }} />
     </div>
   )
 }
