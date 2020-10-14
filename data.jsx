@@ -60,14 +60,14 @@ const render = ({ output, error }) => {
   if (!output || error) return <div className="simple-bar__error">Something went wrong...</div>
   const data = parseJson(output)
   if (!data) return <div className="simple-bar__error">JSON error...</div>
-  const { language, battery, wifi, sound, mic, spotify, browserTrack } = data
+  const { vpn, language, battery, wifi, sound, mic, spotify, browserTrack } = data
   return (
     <div className="simple-bar__data">
       <Language output={language} />
       <Battery output={battery} />
       <Sound output={sound} />
       <Mic output={mic} />
-      <Wifi output={wifi} />
+      <Wifi output={wifi} vpn={vpn}/>
       <DateDisplay />
       <Time />
     </div>

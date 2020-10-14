@@ -19,7 +19,7 @@ const renderName = (name) => {
   return name
 }
 
-const render = ({ output }) => {
+const render = ({ output, vpn }) => {
   if (!output) return null
   const { status, ssid } = output
   const isActive = status === 'active'
@@ -39,6 +39,7 @@ const render = ({ output }) => {
   return (
     <div className={classes} onClick={clicked}>
       <Icon className="wifi__icon" />
+      { vpn && (<div style={{'marginLeft': '4px'}}>VPN</div>) }
     </div>
   )
 }

@@ -16,6 +16,7 @@ WIFI_SSID=$(networksetup -getairportnetwork en0 | cut -c 24-)
 VOLUME=$(osascript -e 'set ovol to output volume of (get volume settings)')
 MUTED=$(osascript -e 'set ovol to output muted of (get volume settings)')
 MIC=$(osascript -e 'set ovol to input volume of (get volume settings)')
+IS_VPN=$(scutil --proxy | grep ProxyAutoConfigEnable)
 
 LANGUAGE=$(xkbswitch -ge)
 
@@ -34,6 +35,7 @@ echo $(cat <<-EOF
       "muted": "$MUTED"
     },
     "language": "$LANGUAGE",
+    "vpn": "$IS_VPN",
     "mic": {
       "volume": "$MIC"
     },
